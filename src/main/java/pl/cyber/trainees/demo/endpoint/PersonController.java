@@ -1,4 +1,4 @@
-package pl.cyber.trainess.demo.endpoint;
+package pl.cyber.trainees.demo.endpoint;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import pl.cyber.trainess.demo.dto.PersonDTO;
-import pl.cyber.trainess.demo.dto.PersonRequest;
-import pl.cyber.trainess.demo.service.PersonService;
+import pl.cyber.trainees.demo.dto.PersonDTO;
+import pl.cyber.trainees.demo.dto.PersonRequest;
+import pl.cyber.trainees.demo.service.PersonService;
+import pl.cyber.trainees.demo.dto.PersonDTO;
+import pl.cyber.trainees.demo.dto.PersonRequest;
+import pl.cyber.trainees.demo.service.PersonService;
 
 /**
  * @author Mariusz Tański
@@ -38,7 +41,7 @@ public class PersonController {
             @RequestParam final String imie,
             @RequestParam final String nazwisko
     ) {
-        return service.getPersonParms(imie, nazwisko);
+        return service.getPersonParams(imie, nazwisko);
     }
 
     @PutMapping("/create")

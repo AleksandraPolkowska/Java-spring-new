@@ -1,8 +1,6 @@
 package pl.cyber.trainees.demo.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 
 import java.beans.ConstructorProperties;
@@ -10,13 +8,14 @@ import java.time.LocalDate;
 
 @Getter
 @Builder
-@RequiredArgsConstructor
-
+@RequiredArgsConstructor //buduje konstruktor klasy z parametrów oznaczonych modyfikatorem final
+@AllArgsConstructor //buduje konstruktor klasy ze wszystkich dostępnych parametrów
 public class Person {
     private final String imie;
     private final String nazwisko;
     private final LocalDate dataUrodzenia;
-    private final String miasto;
+    @Setter
+    private String miasto;
     private final String plec;
 
-    }
+}
