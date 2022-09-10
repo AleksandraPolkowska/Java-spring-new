@@ -255,4 +255,36 @@ restowym nie doszło do jej modyfikacji.
     ){
         return kalkulatorService.rownanieKwadratowe(a, b, c);
     }
+
+    //zadanie 10
+    //za pomocą petli for dla danych wartosci x zmieniajacych sie do 0 do 10 obliczymy wartosc funkcji y = 3x
+
+    @GetMapping("/zadanie 10a")
+    public String zadanie10a(){
+        return kalkulatorService.zadanie10a();
+    }
+
+    // zadanie 10 a
+    // za pomocą petli do while dla danych wartosci x zmieniajacych sie od 0 do 10 obliczymy wartosc funkcji y=3x
+
+    @GetMapping("/zadanie10b")
+    public String zadanie10b(){
+        return kalkulatorService.zadanie10b();
+    }
+
+    // zadanie 10 c
+    // za pomocą petli while dla danych wartosci x zmieniajacych sie od 0 do 10 obliczymy wartosc funkcji y=3x
+
+    @GetMapping("/zadanie10c")
+    public String zadanie10c(){
+        return kalkulatorService.zadanie10c();
+    }
+    // napisz program ktory przy pomocy petli for przekaze nam wyniki tabliczki mnozenia od 1 do 100
+   // dwie petle for jedna bedzie wskazywala wiersze druga kolumny i potrzebny jest parametr okreslajacy dlugosc tabliczki
+    // od 1 do 10
+
+    @GetMapping("/zadanie11a")
+    public String zadanie11a(){
+        return kalkulatorService.zadanie11a();
+    }
 }
