@@ -50,4 +50,28 @@ public class KalkulatorService {
         return false;
     }
 
+    //Zadanie 9
+    public String rownanieKwadratowe(final Integer a, final Integer b, final Integer c) {
+        Double delta = 0.0;
+        Double x1 = 0.0;
+        Double x2 = 0.0;
+
+        if (a == 0) {
+            return "To nie jest równanie kwadratowe";
+        }
+        delta = Double.valueOf(b * b - 4 * a * c);
+
+        if (delta < 0) {
+            return "Brak pierwiastków";
+        }else{
+            if (delta == 0 ){
+                x1 = Double.valueOf(-b/(2*a));
+                return "Jeden pierwiastek. Wynik: " + x1;
+            }else{
+                x1 = (-b-Math.sqrt(delta))/(2*a);
+                x2 = (-b+Math.sqrt(delta))/(2*a);
+                return "Dwa pierwiastki. Wynik x1: " +x1+ " x2: " +x2;
+            }
+        }
+    }
 }

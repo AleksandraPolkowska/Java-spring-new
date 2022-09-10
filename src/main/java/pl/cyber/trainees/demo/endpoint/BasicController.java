@@ -3,6 +3,7 @@ package pl.cyber.trainees.demo.endpoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.cyber.trainees.demo.dto.ImieDTO;
+import pl.cyber.trainees.demo.dto.IntegerListRequest;
 import pl.cyber.trainees.demo.dto.OneStringRequest;
 import pl.cyber.trainees.demo.dto.StringRequest;
 import pl.cyber.trainees.demo.service.BasicsService;
@@ -238,4 +239,20 @@ restowym nie doszło do jej modyfikacji.
 
     // zad8
 
+    @PostMapping("/liczby")
+    public String zadanie8(
+            @RequestBody final IntegerListRequest request
+    ){
+        return basicService.zadanie8(request);
+    }
+
+    // Zadanie 9
+    @GetMapping("/rownanie-kwadratowe/{a}/{b}/{c}")
+    public String rownanieKwadratowe(
+            @PathVariable("a") final Integer a,
+            @PathVariable("b") final Integer b,
+            @PathVariable("c") final Integer c
+    ){
+        return kalkulatorService.rownanieKwadratowe(a, b, c);
+    }
 }

@@ -1,7 +1,7 @@
 package pl.cyber.trainees.demo.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.tags.form.SelectTag;
+import pl.cyber.trainees.demo.dto.IntegerListRequest;
 import pl.cyber.trainees.demo.dto.LiteryDTO;
 import pl.cyber.trainees.demo.dto.OneStringRequest;
 import pl.cyber.trainees.demo.dto.StringRequest;
@@ -13,44 +13,44 @@ import java.util.*;
 public class BasicsService {
 
     public String getSklejenie(final StringRequest request) {
-        return request.getStringPierwszy()+request.getStringDrugi();
+        return request.getStringPierwszy() + request.getStringDrugi();
     }
 
     public List<String> getWystapieniaLiterWZdaniu(final OneStringRequest request) {
-       List<LiteryDTO> wystapienia = new ArrayList<>();
-       Set<String> litery = new HashSet<>();
-       List<String> wynik = new ArrayList<>();
+        List<LiteryDTO> wystapienia = new ArrayList<>();
+        Set<String> litery = new HashSet<>();
+        List<String> wynik = new ArrayList<>();
 
-       String zdanie = request.getValue();
+        String zdanie = request.getValue();
 
-       for (int i = 0; i < zdanie.length(); i++){
-           String litera = String.valueOf(zdanie.charAt(i));
-           if(litera.matches("[a-zA-Z]+")){
-               if (wystapienia.size() == 0){
-                   litery.add(litera.toLowerCase());
-                   wystapienia.add(LiteryDTO.builder()
-                           .litera(litera.toLowerCase())
-                           .ilosc(1)
-                           .build());
-               }else{
-                   if (litery.contains(litera.toLowerCase())) {
-                       for (LiteryDTO element :
-                               wystapienia) {
-                           if (element.getLitera().equals(litera.toLowerCase())) {
-                               element.setIlosc(element.getIlosc() + 1);
-                           }
-                       }
-                   }else{
-                       litery.add(litera.toLowerCase());
-                       wystapienia.add(LiteryDTO.builder()
-                               .litera(litera.toLowerCase())
-                               .ilosc(1)
-                               .build());
-                   }
-               }
-           }
-       }
-        for (LiteryDTO element: wystapienia) {
+        for (int i = 0; i < zdanie.length(); i++) {
+            String litera = String.valueOf(zdanie.charAt(i));
+            if (litera.matches("[a-zA-Z]+")) {
+                if (wystapienia.size() == 0) {
+                    litery.add(litera.toLowerCase());
+                    wystapienia.add(LiteryDTO.builder()
+                            .litera(litera.toLowerCase())
+                            .ilosc(1)
+                            .build());
+                } else {
+                    if (litery.contains(litera.toLowerCase())) {
+                        for (LiteryDTO element :
+                                wystapienia) {
+                            if (element.getLitera().equals(litera.toLowerCase())) {
+                                element.setIlosc(element.getIlosc() + 1);
+                            }
+                        }
+                    } else {
+                        litery.add(litera.toLowerCase());
+                        wystapienia.add(LiteryDTO.builder()
+                                .litera(litera.toLowerCase())
+                                .ilosc(1)
+                                .build());
+                    }
+                }
+            }
+        }
+        for (LiteryDTO element : wystapienia) {
             wynik.add(element.getLitera() + " - " + element.getIlosc());
         }
         wynik.sort(String::compareTo); // wynik - zmienna okreslajaca liste stringow jako wynik ktory zostanie zwrocony
@@ -88,18 +88,33 @@ public class BasicsService {
 
       */
 
-public String sumaLiczbPomiedzy(final Integer a, final Integer b){
-    Integer wynik = 0;
+    public String sumaLiczbPomiedzy(final Integer a, final Integer b) {
+        Integer wynik = 0;
 
-    if (a>b){
-        throw new RuntimeException ("A powinno być mniejsze niż b");
+        if (a > b) {
+            throw new RuntimeException("A powinno być mniejsze niż b");
+        }
+
+        for (int i = a; i <= b; i++) {
+            wynik += i;
+
+        }
+        return "Wynik dodawania liczb pomiedzy a: " + a + " oraz b: " + b + " to: " + wynik;
     }
 
-    for (int i = a; i<=b; i++){
-        wynik += i;
+    public String zadanie8(final IntegerListRequest request) {
+        List<Integer> listaUjemnych = new ArrayList<>();
+        Integer sumaDodatnich = 0;
 
+        for (Integer element :
+                request.getIntList()) {
+            if (element < 0) {
+                listaUjemnych.add(element);
+            } else {
+                sumaDodatnich += element;
+            }
+        }
+        return listaUjemnych + " oraz suma liczb dodatnich wynosi: " + sumaDodatnich;
     }
-    return "Wynik dodawania liczb pomiedzy a: " + a + " oraz b: " + b + " to: " + wynik;
-}
 }
 
