@@ -132,14 +132,57 @@ public class KalkulatorService {
                 "dla liczb od 1 do 100.\n\n";
 
 
-        for(int wiersz = 1; wiersz <=n; wiersz++){
-            for( int kolumna = 1; kolumna<=n; kolumna++){
-                result += wiersz*kolumna;
+        for (int wiersz = 1; wiersz <= n; wiersz++) {
+            for (int kolumna = 1; kolumna <= n; kolumna++) {
+                result += wiersz * kolumna;
                 result += "\t";
             }
             result += "\n";
         }
- return result;
+        return result;
+    }
+
+    public String zadanie11b() {
+        Integer k = 10;
+        Integer w = 10;
+        Integer wiersz = 1;
+        Integer kolumna = 1;
+        String result = "Program wyświetla jakies gowno\n\n";
+        do {
+            kolumna = 1;
+            do {
+                result += wiersz * kolumna;
+                result += "\t";
+                kolumna++;
+            } while (kolumna <= k);
+            result += "\n";
+            wiersz++;
+        } while (wiersz <= w);
+
+        return result;
+
+    }
+
+    public String zadanie11c() {
+
+        Integer k = 10;
+        Integer w = 20;
+        Integer wiersz = 1;
+        Integer kolumna = 1;
+        String result = "Program wyswietla jakies gowno while";
+
+        while (wiersz <= w) {
+            kolumna = 1;
+            while (kolumna <= k) {
+                result += wiersz * kolumna;
+                result += "\t";
+                kolumna++;
+            }
+            result += "\n";
+            wiersz++;
+        }
+        return result;
+
     }
 }
 

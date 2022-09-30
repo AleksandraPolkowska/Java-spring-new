@@ -2,11 +2,13 @@ package pl.cyber.trainees.demo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.cyber.trainees.demo.dto.KluczSortowaniaEnum;
 import pl.cyber.trainees.demo.dto.Person;
 import pl.cyber.trainees.demo.dto.PersonDTO;
 import pl.cyber.trainees.demo.dto.PersonRequest;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service // dzieki temu spring wie ze moze uzywac te klase do defaultowego konstruktora "powolac go do zycia"
@@ -87,6 +89,21 @@ public class PersonService {
                 element.setMiasto(request.getMiasto());
             }
         }
+    }
+
+    List<PersonDTO> resultPersonList = new ArrayList<>();
+    for (Person element: personList){
+        resultPersonList.add(PersonDTO.builder()
+                .imie(element.getImie())
+                .nazwisko(element.getNazwisko())
+                .dataUrodzenia(element.getDataUrodzenia())
+                .miasto(element.getMiasto())
+                .plec(element.getPlec())
+                .build());
+    }
+    if (klucz.equals(KluczSortowaniaEnum.DATA)){
+        resultPersonList.sort(Comparator.comparing(PersonDTO()::getDataUrodzenia));
+        
     }
 
 }

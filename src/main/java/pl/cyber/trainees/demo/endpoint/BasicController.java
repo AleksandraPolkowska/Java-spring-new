@@ -37,12 +37,13 @@ public class BasicController {
 
         return kalkulatorService.getDodawanie(liczbaA, liczbaB);
     }
-        @GetMapping("/dodawanieParams")
-                public Integer getDodawanieParams(
-                        @RequestParam("a") final Integer liczbaA,
-        @RequestParam("a") final Integer liczbaB){
-            return kalkulatorService.getDodawanie(liczbaA, liczbaB);
-        }
+
+    @GetMapping("/dodawanieParams")
+    public Integer getDodawanieParams(
+            @RequestParam("a") final Integer liczbaA,
+            @RequestParam("a") final Integer liczbaB) {
+        return kalkulatorService.getDodawanie(liczbaA, liczbaB);
+    }
 
 
     @GetMapping("/odejmowanie/{a}/{b}")
@@ -91,7 +92,7 @@ public class BasicController {
     @PostMapping("/sklejenie-stringow")
     public String getSklejenie(
             @RequestBody final StringRequest request
-    ){
+    ) {
         return basicService.getSklejenie(request);
     }
 
@@ -113,9 +114,9 @@ o - 1
 t - 1
 */
 
-  //  @POSTMapping
-  //  @RequestBody
-  //  List<LiteryDTO>wystapienia
+    //  @POSTMapping
+    //  @RequestBody
+    //  List<LiteryDTO>wystapienia
     // Set<String> litery (set nie daje powtorzonych wartosci
     // List<String> wynik
 
@@ -128,10 +129,10 @@ t - 1
     // tzw komparator (//Comparator//) .sort(String::compareTo)
     // czyli wyrazenie po ktorym bedziemy wykonywali sortowanie
 
-    @PostMapping ("/zliczanie")
+    @PostMapping("/zliczanie")
     public List<String> getWystapieniaLiterWZdaniu(
-      @RequestBody final OneStringRequest request
-    ){
+            @RequestBody final OneStringRequest request
+    ) {
         return basicService.getWystapieniaLiterWZdaniu(request);
     }
 
@@ -233,7 +234,7 @@ restowym nie doszło do jej modyfikacji.
     public String sumaLiczbPomiedzy(
             @RequestParam("a") final Integer a,
             @RequestParam("b") final Integer b
-    ){
+    ) {
         return basicService.sumaLiczbPomiedzy(a, b);
     }
 
@@ -242,7 +243,7 @@ restowym nie doszło do jej modyfikacji.
     @PostMapping("/liczby")
     public String zadanie8(
             @RequestBody final IntegerListRequest request
-    ){
+    ) {
         return basicService.zadanie8(request);
     }
 
@@ -252,7 +253,7 @@ restowym nie doszło do jej modyfikacji.
             @PathVariable("a") final Integer a,
             @PathVariable("b") final Integer b,
             @PathVariable("c") final Integer c
-    ){
+    ) {
         return kalkulatorService.rownanieKwadratowe(a, b, c);
     }
 
@@ -260,7 +261,7 @@ restowym nie doszło do jej modyfikacji.
     //za pomocą petli for dla danych wartosci x zmieniajacych sie do 0 do 10 obliczymy wartosc funkcji y = 3x
 
     @GetMapping("/zadanie 10a")
-    public String zadanie10a(){
+    public String zadanie10a() {
         return kalkulatorService.zadanie10a();
     }
 
@@ -268,7 +269,7 @@ restowym nie doszło do jej modyfikacji.
     // za pomocą petli do while dla danych wartosci x zmieniajacych sie od 0 do 10 obliczymy wartosc funkcji y=3x
 
     @GetMapping("/zadanie10b")
-    public String zadanie10b(){
+    public String zadanie10b() {
         return kalkulatorService.zadanie10b();
     }
 
@@ -276,15 +277,34 @@ restowym nie doszło do jej modyfikacji.
     // za pomocą petli while dla danych wartosci x zmieniajacych sie od 0 do 10 obliczymy wartosc funkcji y=3x
 
     @GetMapping("/zadanie10c")
-    public String zadanie10c(){
+    public String zadanie10c() {
         return kalkulatorService.zadanie10c();
     }
     // napisz program ktory przy pomocy petli for przekaze nam wyniki tabliczki mnozenia od 1 do 100
-   // dwie petle for jedna bedzie wskazywala wiersze druga kolumny i potrzebny jest parametr okreslajacy dlugosc tabliczki
+    // dwie petle for jedna bedzie wskazywala wiersze druga kolumny i potrzebny jest parametr okreslajacy dlugosc tabliczki
     // od 1 do 10
 
     @GetMapping("/zadanie11a")
-    public String zadanie11a(){
+    public String zadanie11a() {
         return kalkulatorService.zadanie11a();
     }
+
+    // napisz program ktory przy pomocy petli for przekaze nam wyniki tabliczki mnozenia od 1 do 100
+    // dwie petle for jedna bedzie wskazywala wiersze druga kolumny i potrzebny jest parametr okreslajacy dlugosc tabliczki
+    // od 1 do 10
+
+    @GetMapping("/zadanie11b")
+    public String zadanie11b() {
+        return kalkulatorService.zadanie11b();
+    }
+
+    // to samo tylko z petla while
+
+    @GetMapping("/zadanie11c")
+    public String zadanie11c() {
+        return kalkulatorService.zadanie11c();
+    }
+
+    Zadanie 12
+
 }
